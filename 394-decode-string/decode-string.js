@@ -27,3 +27,6 @@ const stack = [];
 
   return stack.join('');
 };
+//at the end of a stack undefined will pushed back to stack bec we pop a empty stack
+// Which means we push undefined back onto the stack.
+// (In practice, it’s harmless because when we later join(''), undefined becomes an empty string).
