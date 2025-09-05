@@ -5,21 +5,25 @@
 var decodeString = function(s) {
 const stack = [];
   for (const char of s) {
-    if (char !== "]") { stack.push(char); continue; }
-    let cur = stack.pop();
-    let str = '';
-    while (cur !== '[') {
-      str = cur + str;
-      cur = stack.pop();
+    if(char !== "]"){
+        stack.push(char)
+        continue
     }
-    let num = '';
-    cur = stack.pop();
-    while (!Number.isNaN(Number(cur))) {
-      num = cur + num;
-      cur = stack.pop();
+    let newString=''
+    let currentChar= stack.pop();
+    while(currentChar !== "["){
+        newString = currentChar + newString // to orginize the order right a, b => normally ba but if we follow this then => ab
+        currentChar= stack.pop()
     }
-    stack.push(cur);
-    stack.push(str.repeat(Number(num)));
+    let number = ''
+    currentChar= stack.pop()
+    while( !Number.isNaN(Number(currentChar))){
+        number = currentChar + number
+        currentChar= stack.pop()
+    }
+    stack.push(currentChar) // bec we need that that char in order to properly calculate which we previously removed to prgress our while loop
+    stack.push(newString.repeat(Number(number)))
   }
+
   return stack.join('');
 };
