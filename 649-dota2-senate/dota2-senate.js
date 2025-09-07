@@ -3,9 +3,9 @@
  * @return {string}
  */
 var predictPartyVictory = function(senate) {
-    let radient=[]
+ let radient=[]
     let dire =[]
-    for (let [i ,ch] of [...senate].entries()) {
+    for (let i = 0; i < senate.length; i++) {
         if (senate[i] === "R") {
             radient.push(i);
         } else {
@@ -24,4 +24,6 @@ var predictPartyVictory = function(senate) {
     }
     return radient.length == 0 ? "Dire" : "Radiant"
 };
+
+
 
