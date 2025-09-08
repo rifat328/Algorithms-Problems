@@ -11,7 +11,7 @@ var getNoZeroIntegers = function(n) {
         if(hasZero(a) && hasZero(b)){
             return [a, b];
         }
- 
+    //memory only beats 23.19
     }
 }
 
