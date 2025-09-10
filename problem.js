@@ -4,8 +4,7 @@ Input: (1)data; (2)target
      data: a list/array of numbers
      target: a number
 Output: [x, y], x and y are two elements in the data array that satisfy x-y == target
-
-
+*/
 
 let nums = [-3, -1, -7, 2];
 let target = 4;
@@ -22,7 +21,7 @@ const findElement = (nums, target) => {
   }
   return [];
 };
-*/
+
 //Test cases:
 //  1. Basic positive numbers
 // (nums = [5, 6, 4, 9, 1]), (target = 4);
