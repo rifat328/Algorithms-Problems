@@ -5,6 +5,23 @@ Input: (1)data; (2)target
      target: a number
 Output: [x, y], x and y are two elements in the data array that satisfy x-y == target
 
+
+
+let nums = [-3, -1, -7, 2];
+let target = 4;
+const findElement = (nums, target) => {
+  let map = {};
+  for (let i = 0; i < nums.length; i++) {
+    let x = nums[i];
+    let y = x - target; // so x-y == target
+    if (map[y] !== undefined) {
+      return [x, y];
+    } else {
+      map[x] = i; //storing current num in map : where key as value and value as indices    //map[x] = nums[i]; // a.set(x, nums[i]) a = new Map()
+    }
+  }
+  return [];
+};
 */
 //Test cases:
 //  1. Basic positive numbers
@@ -22,23 +39,6 @@ Output: [x, y], x and y are two elements in the data array that satisfy x-y == t
 //  4. Duplicate numbers
 // (nums = [2, 2, 2]), (target = 0);
 //  Expected: [2, 2]       Passed
-
-let nums = [-3, -1, -7, 2];
-let target = 4;
-const findElement = (nums, target) => {
-  let map = {};
-  for (let i = 0; i < nums.length; i++) {
-    let x = nums[i];
-    let y = x - target; // so x-y == target
-    if (map[y] !== undefined) {
-      return [x, y];
-    } else {
-      map[x] = i; //storing current num in map : where key as value and value as indices    //map[x] = nums[i]; // a.set(x, nums[i]) a = new Map()
-    }
-  }
-  return [];
-};
-
 /*
 console.log(findElement(nums, target));
 console.log(findElement([10, -2, 7, 3], 12)); // [10, -2] Failed
