@@ -38,6 +38,5 @@ var search = function(nums, target) {
 
 //     }
 // }
-
 // Time: O(log n) because the search space is halved each step.
 // Space: O(1) if iterative, O(log n) if recursive.
