@@ -12,7 +12,7 @@
  * @return {number}
  */
 var pathSum = function(root, targetSum) {
-    
+    // n Square solution because its calculating for every possible path
     function countPathFromNode(node, target){
         if(!node){ return 0}
         let count=0;
@@ -23,9 +23,10 @@ var pathSum = function(root, targetSum) {
         count+= countPathFromNode(node.right, target - node.val)
         return count;
     }
+    
     if(!root){ return 0}
-    let total= countPathFromNode(root, targetSum)
-        total+= pathSum(root.left, targetSum)
+    let total= countPathFromNode(root, targetSum) // possible count for root node
+        total+= pathSum(root.left, targetSum) 
         total+= pathSum(root.right, targetSum)
     
     return total;
