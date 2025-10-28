@@ -1,18 +1,46 @@
 //Implemented Graph using Adjacent List Method
 
-class Grapph {
+class Graph {
   constructor() {
     this.numberOfNodes = 0;
     this.adjacentList = {};
   }
 
-  addVertex(node) {}
+  addVertex(node) {
+    if (!this.adjacentList[node]) {
+      this.adjacentList[node] = [];
+      this.numberOfNodes++;
+    }
+  }
   addEdge(node1, node2) {
     // undirected Graph
+
+    // Node or vertex doesn't exist
+    if (!this.adjacentList[node1]) {
+      console.warn(
+        `Vertex ${node1} doesn't exist, \n  Creating This Vertex ${node1} `
+      );
+      this.addVertex(node1);
+    }
+    if (!this.adjacentList[node2]) {
+      console.warn(
+        `Vertex ${node2} doesn't exist, \n  Creating This Vertex ${node2} `
+      );
+      this.addVertex(node2);
+    }
+    //Node exist
+    if (this.adjacentList[node1] && this.adjacentList[node2]) {
+      if (!this.adjacentList[node1].includes(node2)) {
+        this.adjacentList[node1].push(node2);
+      }
+      if (!this.adjacentList[node2].includes(node1)) {
+        this.adjacentList[node2].push(node1);
+      }
+    }
   }
   //helper method to see the graph
   showConnections() {
-    const allNodes = object.keys(this.adjacentList);
+    const allNodes = Object.keys(this.adjacentList);
     for (let node of allNodes) {
       let nodeConnections = this.adjacentList[node];
       let connections = "";
@@ -25,7 +53,7 @@ class Grapph {
   }
 }
 
-const myGraph = new Grapph();
+const myGraph = new Graph();
 myGraph.addVertex("0");
 myGraph.addVertex("1");
 myGraph.addVertex("2");
