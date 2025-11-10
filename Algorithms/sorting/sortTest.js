@@ -85,7 +85,7 @@ const items = [
 
 // sort by value
 items.sort((a, b) => a.value - b.value);
-
+console.log(items);
 // sort by name
 items.sort((a, b) => {
   const nameA = a.name.toUpperCase(); // ignore upper and lowercase
@@ -100,3 +100,4 @@ items.sort((a, b) => {
   // names must be equal
   return 0;
 });
+console.log(items);
