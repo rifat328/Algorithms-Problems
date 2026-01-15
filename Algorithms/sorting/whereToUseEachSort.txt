@@ -1,0 +1,16 @@
+#1 - Sort 10 Schools around your house by distance:
+        => insertion sort , its really fast on small input and easily implemented.
+#2 - eBay sort current listings by current bid amount:
+        => radix or counting sort.
+#3 - Sport score on ESPN:
+        => Quick Sort 
+#4 - Massive Database (cant fit all into memory) needs to sort through past years user Data:
+        => Merge sort
+#5 - Almost sorted Udemy review data needs to update and add 2 new reviews:
+        => insertion sort
+#6 - Temperature Records for the past 50 years in canada:
+        => redix or counting sort if (its in small range number and its a intiger number)
+            quick sort if it has decimal numbers
+#7 - larger user name database needs to be sorted, data is very random:
+        => Merge Sort if we have memory ,
+        quick sort else 
