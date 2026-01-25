@@ -11,9 +11,9 @@ var numTilings = function(n) {
     dp[0] = 1;
     dp[1] = 1;
 
-    for(let i = 2; i<=n; i++){
-        dp2[i] = (dp[i-2] + dp2[i-1]) % MOD;
-        dp[i]= (dp[i-1] + dp[i-2] + 2 * dp2[i-1]) %MOD;
+    for(let i=2; i<=n; i++){
+        dp2[i]= (dp[i-2] + dp2[i-1]) %MOD;
+        dp[i] = (dp[i-1] + dp[i-2] + 2 * dp2[i-1]) %MOD
     }
 
     return dp[n];
