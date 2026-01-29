@@ -23,4 +23,4 @@ console.log(result);
 //   return Array.from(arguments);
 // }
 // console.log(createArrayFromArgs(1, 2, 3));
-// // Output: [1, 2, 3]
+// Output: [1, 2, 3]
