@@ -24,7 +24,7 @@ class Solution {
       while (str[j] !== "#") {
         j++;
       }
-      let MetadataNumber = parseInt(str.slice(str[left], str[j]));
+      let MetadataNumber = parseInt(str.slice(left, j));
 
       left = j + 1;
       let stringValue = str.slice(left, left + MetadataNumber);
