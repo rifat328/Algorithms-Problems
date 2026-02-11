@@ -140,8 +140,26 @@ function traverseInorder(node, list) {
   }
   return list;
 }
-function traversePreorder(node, list) {}
-function traversePostorder(node, list) {}
+function traversePreorder(node, list) {
+  list.push(node.value);
+  if (node.left) {
+    traversePreorder(node.left, list);
+  }
+  if (node.right) {
+    traversePreorder(node.right, list);
+  }
+  return list;
+}
+function traversePostorder(node, list) {
+  if (node.left) {
+    traversePostorder(node.left, list);
+  }
+  if (node.right) {
+    traversePostorder(node.right, list);
+  }
+  list.push(node.value);
+  return list;
+}
 
 const tree = new BinarySearchTree();
 //      9
@@ -157,8 +175,9 @@ tree.insert(1);
 // tree.remove(170);
 // console.log(JSON.stringify(traverse(tree.root), null, 4));
 // console.log(tree.depthFirstSearch());
-console.log(tree.depthFirstSearchRecursiveInorder());
-
+// console.log(tree.depthFirstSearchRecursiveInorder());
+// console.log(tree.depthFirstSearchRecursivePreorder());
+console.log(tree.depthFirstSearchRecursivePostorder());
 function traverse(node) {
   // to print the tree structure
   // DFS traversal
