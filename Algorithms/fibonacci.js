@@ -21,6 +21,7 @@ let findFibonacciRecursive = (number) => {
   return (
     findFibonacciRecursive(number - 1) + findFibonacciRecursive(number - 2)
   );
+
   //  fib(5)
   //  ├── fib(4)
   //  │    ├── fib(3)
@@ -38,6 +39,24 @@ let findFibonacciRecursive = (number) => {
   //       └── fib(1) → 1
 };
 
+let findFibonacciMemoization = () => {
+  let cache = {};
+  return function fib(number) {
+    if (n in cache) {
+      return cache[n];
+    } else {
+      if (n < 2) {
+        return n;
+      } else {
+        cache[n] = fib(n - 1) + fib(n - 2);
+        return cache[n];
+      }
+    }
+  };
+};
+
 console.log(findFibonacciIterative(43)); // ✅ Pass O(N)
 
 console.log(findFibonacciRecursive(43)); // ✅ Pass O(2 ^ N)
+let memoization = findFibonacciMemoization();
+console.log(memoization(43)); //Pass O(N)
