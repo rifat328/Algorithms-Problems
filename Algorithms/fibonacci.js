@@ -42,14 +42,14 @@ let findFibonacciRecursive = (number) => {
 let findFibonacciMemoization = () => {
   let cache = {};
   return function fib(number) {
-    if (n in cache) {
-      return cache[n];
+    if (number in cache) {
+      return cache[number];
     } else {
-      if (n < 2) {
-        return n;
+      if (number < 2) {
+        return number;
       } else {
-        cache[n] = fib(n - 1) + fib(n - 2);
-        return cache[n];
+        cache[number] = fib(number - 1) + fib(number - 2);
+        return cache[number];
       }
     }
   };
