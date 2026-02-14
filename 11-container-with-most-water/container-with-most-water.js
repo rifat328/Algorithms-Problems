@@ -9,9 +9,7 @@ var maxArea = function(height) {
     while(left<right){
         let minHeight = Math.min(height[left], height[right])
         let currentMax= minHeight * (right-left)
-         if(height[left] < height[right]){
-            left++
-        }else if(height[left] == height[right]){
+         if(height[left] <= height[right]){
             left++
         }else{
             right--
