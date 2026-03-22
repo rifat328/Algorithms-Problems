@@ -3,21 +3,29 @@
  * @return {number}
  */
 var trap = function(height) {
-    if(height.length < 2) return 0;
-    let left=0; 
-    let right=height.length-1;
-    let leftMax=height[left], rightMax= height[right];
-    let res=0;
-    while(left<right){
-        if(height[left] < height[right]){
-            left++;
-            leftMax = Math.max(leftMax, height[left])
-            res +=  leftMax - height[left] ;
-        } else{
-            right--;
-            rightMax = Math.max(rightMax, height[right])
-            res += rightMax - height[right];
-        }
+   //brute force precomputation
+   let n= height.length
+   let leftMax= new Array(n).fill(0);
+   let rightMax=new  Array(n).fill(0);
+   let max=0;
+   // for leftMax at each position of i
+   for(let i=1; i<n; i++){
+   max= Math.max(max , height[i-1])
+   leftMax[i]=(max)
+   }
+   max = 0;
+   for(let i=n-2; i>0; i--){
+   max= Math.max(max , height[i+1])
+   rightMax[i]=(max);
+   }
+   let total= 0
+   for(let i= 0; i< n; i++){
+    let min = Math.min(leftMax[i], rightMax[i])
+    let water = min - height[i];
+    if(water >0){
+        total+= water
     }
-    return res;
+    
+   }
+   return total;
 };
