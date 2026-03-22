@@ -5,6 +5,9 @@
 var trap = function(height) {
    //brute force precomputation
    let n= height.length
+   if(n == 0 ){
+    return 0;
+   }
    let leftMax= new Array(n).fill(0);
    let rightMax=new  Array(n).fill(0);
    let max=0;
