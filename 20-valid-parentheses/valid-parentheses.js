@@ -3,23 +3,26 @@
  * @return {boolean}
  */
 var isValid = function(s) {
-    let stack= [];
+    if(s.length % 2 !== 0) return false;
     let closeToOpen={
         ")":"(",
         "]":"[",
         "}":"{",
     }
-    for(let char of s){
-        if(closeToOpen[char]){
-            if(stack.length >0 && stack[stack.length-1] == closeToOpen[char]){
-                stack.pop()
-            }else{
-                return false;
-            }
-            
+    let stack=[];
+   for(let char of s){
+        let topValue= stack.length-1;
+       if( closeToOpen[char]){
+        if(topValue >= 0 && stack[topValue] === closeToOpen[char]){
+            stack.pop();
         }else{
-            stack.push(char);
+            return false
         }
-    }
+       }else{
+        stack.push(char)
+       }
+   }
+   
     return stack.length === 0;
+
 };
