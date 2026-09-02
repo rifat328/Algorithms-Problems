@@ -4,20 +4,26 @@
  * @return {number[]}
  */
 var topKFrequent = function(nums, k) {
+    // bucket sort approach
     let map = new Map();
-    for(let i=0; i<nums.length; i++){
-        if(map.has(nums[i])){
-           map.set(nums[i] , (map.get(nums[i]) +1)) 
-        }else{
-            map.set(nums[i] , 1) 
+    for(let num of nums){
+           map.set(num , (map.get(num) || 0 ) +1) 
+    }
+    let bucket = Array.from({length: nums.length +1}, ()=>[]);
+
+    for([num, freq] of map.entries()){
+        bucket[freq].push(num);
+    }
+    
+    // collect top k element (iterate top to bottom)
+    let result=[]
+    for(let i=bucket.length-1; i>=0 && result.length < k ; i--){
+        if(bucket[i].length > 0){
+            result.push(...bucket[i])
         }
     }
-    let sortedArray = [...map.entries()].sort((a,b)=>{
-        return b[1] - a[1];
-    })
-    let output=[];
-    for(let i=0; i<k; i++){
-        output.push(sortedArray[i][0])
-    }
-    return output;
-};
+    
+    return result.slice(0,k);
+
+}
+   
