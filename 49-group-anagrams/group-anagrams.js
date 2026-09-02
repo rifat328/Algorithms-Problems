@@ -3,17 +3,15 @@
  * @return {string[][]}
  */
 var groupAnagrams = function(strs) {
-    if(strs.length <=1){
-        return [strs];
-    }
-    let map = {};
-    for(let i=0; i< strs.length; i++){
-        let sortedKey=strs[i].split("").sort().join("");
-        if(!map[sortedKey]){
-            map[sortedKey]=[];
-        }
-        map[sortedKey].push(strs[i]);
+    let map = new Map();
 
+   for(let i=0; i< strs.length; i++){
+   let sortedValue = strs[i].split("").sort().join("");
+    if(map.has(sortedValue)){
+        map.get(sortedValue).push(strs[i]) 
+    }else{
+        map.set(sortedValue, [strs[i]])
     }
-    return Object.values(map)
+   }
+   return Array.from(map.values());
 };
